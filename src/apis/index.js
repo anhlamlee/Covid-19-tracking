@@ -5,3 +5,8 @@ export const GetCountries = () =>
 
 export const GetReportByCountry = (country) =>
   axios.get(`https://api.covid19api.com/dayone/country/${country}`);
+
+export const GetMapDataByCountryId = (countryId) =>
+  import(
+    `@highcharts/map-collection/countries/${countryId}/${countryId}-all.geo.json`
+  );

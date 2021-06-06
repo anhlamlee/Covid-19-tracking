@@ -6,6 +6,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import CountUp from "react-countup";
 
 export default function Highlight({ report }) {
   const data = report && report.length ? report[report.length - 1] : [];
@@ -30,7 +31,7 @@ export default function Highlight({ report }) {
   return (
     <Grid container spacing={3}>
       {summary.map((item) => (
-        <Grid item sm={4} xs={12}>
+        <Grid item sm={4} xs={12} key={item.type}>
           <HighlighCard
             title={item.title}
             count={item.count}
@@ -61,7 +62,7 @@ function HighlighCard({ title, count, type }) {
           {title}
         </Typography>
         <Typography component="span" variant="body2" className={styles.count}>
-          {count}
+          <CountUp end={count} duration={2} separator=" " />
         </Typography>
       </CardContent>
     </Card>
